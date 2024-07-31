@@ -33,7 +33,7 @@ public class NovoLivroController {
 	 
 	 private ConnectDB connection = new ConnectDB();
 	 
-	 
+	 private BibliotecaController bibliotecaController = new BibliotecaController();
 	 
 	 // Filtro de entrada para aceitar so numeros no campo inputAno
 	 @FXML
@@ -65,6 +65,8 @@ public class NovoLivroController {
 				 
 				 JOptionPane.showMessageDialog(null, "Livro adicionado com sucesso" , "Aviso", JOptionPane.INFORMATION_MESSAGE);
 				 
+				 bibliotecaController.carregarDadosNaTabela();
+				 
 				 ps.close();
 				 con.close();
 			 }catch (Exception e) {
@@ -74,6 +76,8 @@ public class NovoLivroController {
 				 inputAutor.clear();
 				 inputEditora.clear();
 				 inputAno.clear();
+				
+				
 				 
 			 }
 		 }

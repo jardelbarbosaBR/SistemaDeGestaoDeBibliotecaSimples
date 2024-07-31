@@ -2,7 +2,7 @@ package br.com.kaezansystem.biblioteca;
 
 public class Livro {
 	
-	private String id;
+	private Integer id;
 	private String titulo;
 	private String autor;
 	private String editora;
@@ -13,7 +13,7 @@ public class Livro {
 		
 	}
 	
-	public Livro(String id, String titulo, String autor, String editora, Integer ano) {
+	public Livro(Integer id, String titulo, String autor, String editora, Integer ano) {
 		this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
@@ -21,10 +21,10 @@ public class Livro {
 		this.ano = ano;
 	}
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTitulo() {
