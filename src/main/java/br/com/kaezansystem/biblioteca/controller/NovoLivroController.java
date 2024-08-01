@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 import br.com.kaezansystem.biblioteca.DB.ConnectDB;
+import br.com.kaezansystem.biblioteca.interfaces.AtualizarTabelaLista;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -33,7 +34,7 @@ public class NovoLivroController {
 	 
 	 private ConnectDB connection = new ConnectDB();
 	 
-	 private BibliotecaController bibliotecaController = new BibliotecaController();
+	 private AtualizarTabelaLista listener;
 	 
 	 // Filtro de entrada para aceitar so numeros no campo inputAno
 	 @FXML
@@ -41,6 +42,11 @@ public class NovoLivroController {
 		 inputAno.textProperty().addListener((observable, oldValue, newValue)->{
 			 inputAno.setText(newValue.replaceAll("[^\\d]", ""));
 		 });
+	 }
+	 
+	 // Ouvindo atuzalização da tabela de livros
+	 public void setAtualizarTabelaListener(AtualizarTabelaLista listener) {
+		 this.listener = listener;
 	 }
 	 
 	 //Adcionar um novo livro ao banco de dados
@@ -65,7 +71,9 @@ public class NovoLivroController {
 				 
 				 JOptionPane.showMessageDialog(null, "Livro adicionado com sucesso" , "Aviso", JOptionPane.INFORMATION_MESSAGE);
 				 
-				 bibliotecaController.carregarDadosNaTabela();
+				 if(listener != null) {
+					 listener.atulizarTabela();
+				 }
 				 
 				 ps.close();
 				 con.close();

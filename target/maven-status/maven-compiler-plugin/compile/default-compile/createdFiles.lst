@@ -1,3 +1,4 @@
+br\com\kaezansystem\biblioteca\interfaces\AtualizarTabelaLista.class
 br\com\kaezansystem\biblioteca\controller\NovoLivroController.class
 br\com\kaezansystem\biblioteca\controller\BibliotecaController.class
 br\com\kaezansystem\biblioteca\Livro.class
